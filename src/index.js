@@ -67,7 +67,7 @@ function showWeather(response) {
   ).innerHTML = `${response.data.main.humidity}%`;
   let roundWind = Math.round(response.data.wind.speed);
   document.querySelector("#windSpeed").innerHTML = `${roundWind}km/h`;
-  document.querySelector("h3").innerHTML = response.data.weather[0].description;
+  document.querySelector("h3").innerHTML = response.data.weather[0].main;
 }
 
 function searchCity(event) {

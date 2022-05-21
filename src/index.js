@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -22,11 +23,6 @@ function formatDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
-
-let dateToday = document.querySelector("#current-date");
-let currentTime = new Date();
-
-dateToday.innerHTML = formatDate(currentTime);
 
 //////////conversion
 
@@ -67,7 +63,9 @@ function showWeather(response) {
   ).innerHTML = `${response.data.main.humidity}%`;
   let roundWind = Math.round(response.data.wind.speed);
   document.querySelector("#windSpeed").innerHTML = `${roundWind}km/h`;
-  document.querySelector("h3").innerHTML = response.data.weather[0].main;
+  document.querySelector("h3").innerHTML = response.data.weather[0].description;
+  let dateElement = document.querySelector("#current-date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function searchCity(event) {

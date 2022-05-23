@@ -26,17 +26,20 @@ function formatDate(timestamp) {
 
 function showWeather(response) {
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `${response.data.name}`;
   let span = document.querySelector("span");
-  let temperature = Math.round(response.data.main.temp);
+  let roundWind = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#current-date");
+
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
+
+  h1.innerHTML = `${response.data.name}`;
   span.innerHTML = `${temperature}`;
   document.querySelector(
     "#humidityNumber"
   ).innerHTML = `${response.data.main.humidity}%`;
-  let roundWind = Math.round(response.data.wind.speed);
   document.querySelector("#windSpeed").innerHTML = `${roundWind}km/h`;
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
-  let dateElement = document.querySelector("#current-date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
@@ -67,29 +70,31 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-function convertCelsius(event) {
+function displayFahrenheit(event) {
   event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
 
-  let mainTemp = document.querySelector("#main-temp");
-  let temperature = mainTemp.innerHTML;
-  temperature = Number(temperature);
-  mainTemp.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-function convertFahrenheit(event) {
+function displayCelsius(event) {
   event.preventDefault();
-
-  let mainTemp = document.querySelector("#main-temp");
-  let temperature = mainTemp.innerHTML;
-  temperature = Number(temperature);
-  mainTemp.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#main-temp");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-let fahrenheitTemperature = document.querySelector("#fahrenheit-temp");
-fahrenheitTemperature.addEventListener("click", convertFahrenheit);
+let celsiusTemperature = null;
 
-let celsiusTemperature = document.querySelector("#celsius-temp");
-celsiusTemperature.addEventListener("click", convertCelsius);
+let fahrenheitLink = document.querySelector("#fahrenheit-temp");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-temp");
+celsiusLink.addEventListener("click", displayCelsius);
 
 let currentButton = document.querySelector(".current");
 currentButton.addEventListener("click", getCurrentPosition);

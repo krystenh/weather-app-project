@@ -29,6 +29,7 @@ function showWeather(response) {
   let span = document.querySelector("span");
   let roundWind = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector("#current-date");
+  let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = response.data.main.temp;
   let temperature = Math.round(celsiusTemperature);
@@ -41,6 +42,11 @@ function showWeather(response) {
   document.querySelector("#windSpeed").innerHTML = `${roundWind}km/h`;
   document.querySelector("h3").innerHTML = response.data.weather[0].description;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `images/${response.data.weather[0].icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(city) {

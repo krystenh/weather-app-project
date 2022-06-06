@@ -7,7 +7,7 @@ h2,
 h3,
 p {
   font-family: "Cabin", sans-serif;
-  color: #104f6e;
+  color: #04214d;
 }
 
 h1 {
@@ -21,6 +21,7 @@ h1 {
 p {
   text-align: right;
   margin: 0 15px 0 0;
+  color: white;
 }
 
 h2 {
@@ -47,7 +48,7 @@ a {
 }
 
 .container-background {
-  background-image: url(../images/losangeles.jpg);
+  background-image: url(../images/skywallpaper.jpg);
   background-repeat: no-repeat;
   border: solid 2px white;
   box-shadow: rgb(37 39 89 / 8%) 0px 7px 7px 0px;
@@ -55,6 +56,7 @@ a {
   margin-top: 20px;
   max-width: 800px;
   border-radius: 30px;
+  overflow: hidden;
 }
 
 .search-city {
@@ -71,14 +73,14 @@ a {
 
 .search-button {
   border-radius: 10px;
-  background: #196b9a;
+  background: #04214d;
   color: white;
   opacity: 0.7;
 }
 
 .current {
   border-radius: 10px;
-  background: #196b9a;
+  background: #04214d;
   color: white;
   opacity: 0.7;
   font-family: "Cabin", sans-serif;
@@ -106,20 +108,15 @@ a {
   width: 35%;
   padding: 5px;
   font-size: 12px;
-  padding-bottom: 70px;
+  padding-bottom: 135px;
 }
 
 .col-sm.one {
   border: solid 1px white;
-  border-radius: 0 0 0px 26px;
 }
 
 .col-sm {
-  background: linear-gradient(
-    180.3deg,
-    rgb(255, 240, 218) 5.5%,
-    rgb(142, 188, 217) 90.2%
-  );
+  background: linear-gradient(to top, #33a2df 0%, #d4effc 100%);
   text-align: center;
   font-size: 12px;
   padding-bottom: 5px;
@@ -127,25 +124,11 @@ a {
   font-family: "Cabin", sans-serif;
 }
 
-.col-sm.five {
-  border: solid 1px white;
-  border-radius: 0 0 26px 0;
-}
-
 .weather-pic {
-  width: 60px;
-}
-
-.sun-pic {
-  width: 70px;
-  margin-bottom: 5px;
-  padding-top: 5px;
-}
-
-.rain-pic {
-  width: 70px;
-  padding-top: 5px;
-  margin-bottom: 5px;
+  width: 57px;
+  height: 60px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 .open-source {
@@ -154,12 +137,8 @@ a {
   font-size: 12px;
 }
 
-.active {
-  color: #104f6e;
-  cursor: default;
-}
-
-.active:hover {
-  text-decoration: none;
-  color: #104f6e;
+.weather-temp-max {
+  text-align: center;
+  position: relative;
+  margin-bottom: 10px;
 }
